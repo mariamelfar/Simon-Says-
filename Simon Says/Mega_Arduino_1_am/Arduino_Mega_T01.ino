@@ -1,15 +1,3 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-#include "pitches.h"
-#include "Constants.h"
-#include "Globals.h"
-#include "LCD_Display.h"
-#include "LED_Control.h"
-#include "Button_Input.h"
-#include "Single_Mode.h"
-#include "Multi_Mode.h"
-
-// Initialize global variables
 int gameMode = 0;
 int playerMode = 0;   // 1 = Single-player, 2 = Two-player
 
@@ -26,6 +14,9 @@ void setup() {
 
   // Start with welcome screen and player selection
   showWelcomeScreen();
+
+  //random setup
+  randomSeed(analogRead(A0));
 }
 
 void loop() {
