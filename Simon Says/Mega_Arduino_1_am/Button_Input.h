@@ -5,47 +5,67 @@
 #include "LCD_Display.h"
 
 //Pull_UP for Buttons
-void initButtons() {
-  for (int i = 0; i < NUM_LEDS; i++) {
-    pinMode(p1Buttons[i], INPUT_PULLUP); //internal pull-up resistor
-    pinMode(p2Buttons[i], INPUT_PULLUP);
-  }
-  pinMode(resetButton, INPUT_PULLUP);
+void initButtons(void) {
+    // — Player 1 buttons on PORTD —  
+    for (uint8_t i = 0; i < NUM_LEDS; i++) {
+        DDRD  &= ~(1 << p1Buttons[i]);  // input
+        PORTD |=  (1 << p1Buttons[i]);  // pull-up on
+    }
+
+    // — Player 2 buttons on PORTB —  
+    for (uint8_t i = 0; i < NUM_LEDS; i++) {
+        DDRB  &= ~(1 << p2Buttons[i]);
+        PORTB |=  (1 << p2Buttons[i]);
+    }
+
+    // — Reset button on PORTB —  
+    DDRB  &= ~(1 << RESET_BTN);
+    PORTB |=  (1 << RESET_BTN);
 }
 
 //Select Player Mode (Single or 2-Players)
-void handlePlayerSelection() {
-  if (digitalRead(p1Buttons[0]) == LOW) { // Red button - single player (P1 only)
-    playerMode = 1; //Single_Player
-    showGameSelect();
-  } else if (digitalRead(p1Buttons[1]) == LOW || digitalRead(p2Buttons[1]) == LOW ){ // Blue button - multiplayer (P1 - P2)
-    playerMode = 2;
-    showGameSelect();
-  }
+void handlePlayerSelection(void) {
+    // — Single-player: P1 red button (p1Buttons[0] on PORTD) pressed?
+    if (!(PIND & (1 << p1Buttons[0]))) {
+        playerMode = 1;     // Single_Player
+        showGameSelect();
+    }
+    // — Multiplayer: P1 blue (p1Buttons[1] on PORTD) OR P2 blue (p2Buttons[1] on PORTB)
+    else if (!(PIND & (1 << p1Buttons[1])) 
+          || !(PINB & (1 << p2Buttons[1]))) {
+        playerMode = 2;     // Multiplayer
+        showGameSelect();
+    }
 }
 
 // choose game mode 
-void handleGameSelection() { 
-  for (int c = 0; c < 3; c++) {
-    if ((playerMode == 1 && digitalRead(p1Buttons[c]) == LOW) || (playerMode == 2 && digitalRead(p2Buttons[c]) == LOW) || (playerMode == 2 && digitalRead(p1Buttons[c]) == LOW)) //0: P1: Single -> Red || P2: 2-player -> Red || P1: 2-player -> Red   
-    {
-      delay(50); // debounce (for noise)
-        gameMode = c + 1; //1: Red, 2: Blue, 3: Green
-        lcd.clear();
+void handleGameSelection(void) {
+    for (uint8_t c = 0; c < 3; c++) {
+        // read buttons (pressed = LOW because of pull-ups)
+        bool p1Pressed = !(PIND & (1 << p1Buttons[c]));
+        bool p2Pressed = !(PINB & (1 << p2Buttons[c]));
 
-        if (playerMode == 1)  //Single
+        // single-player: P1 only
+        // 2-player: either P2 or P1
+        if ((playerMode == 1 && p1Pressed) ||
+            (playerMode == 2 && (p2Pressed || p1Pressed)))
         {
-          if (gameMode == 1) SP_startMemoryGame(); //1st iteration: Memory 
-          else if (gameMode == 2) SP_startReactionGame();  //2nd: Reaction Fast
-          else if (gameMode == 3) SP_startCoordinationGame();  //3rd: Coordination
-        } 
-        
-        else if (playerMode == 2) //2-players 
-        {
-          if (gameMode == 1) MP_startMemoryGame();
-          else if (gameMode == 2) MP_startReactionGame();
-          else if (gameMode == 3) MP_startCoordinationGame();
+            _delay_ms(50);  // simple debounce
+
+            gameMode = c + 1;  
+            lcdClear();
+
+            if (playerMode == 1) {
+                if      (gameMode == 1) SP_startMemoryGame();
+                else if (gameMode == 2) SP_startReactionGame();
+                else if (gameMode == 3) SP_startCoordinationGame();
+            } else {  // playerMode == 2
+                if      (gameMode == 1) MP_startMemoryGame();
+                else if (gameMode == 2) MP_startReactionGame();
+                else if (gameMode == 3) MP_startCoordinationGame();
+            }
+
+            break;  // stop checking other buttons this cycle
         }
     }
-  }
 }
