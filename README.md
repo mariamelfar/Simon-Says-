@@ -17,14 +17,14 @@ coordination. Players interact through four color-coded buttons and receive real
 feedback on an LCD screen. Scoring systems vary by mode, rewarding accuracy, speed, 
 and progression through increasingly difficult patterns. 
  
-                                                         Proposed Game Modes 
+                                          Proposed Game Modes 
 The game includes 6 levels. It supports both single-player and 2-player modes. The 
 hardware includes: 
 • 4 color-coded LEDs to display light sequences 
 • 4 color-coded buttons for each player 
 • LCD screen for user feedback 
 
-                                                        Single-Player Mode 
+                                         Single-Player Mode 
 Normal Point Scoring System:  
 Scoring system for all game modes (single-player). If the user answers correctly 
 (depending on the game mode criteria), he/she will receive 1 point. If they answer 
@@ -55,7 +55,7 @@ will get 0 points but proceed.
 • Time for each round increase (as there is a higher number of LEDs) 
 • If the player responds faster than the time limit, he/she will receive 1 bonus 
 point. 
-                                                             2-Player Mode 
+                                             2-Player Mode 
 1. Fastest Reaction 
 • Both players respond to the same LED sequence 
 • (5) LEDs light up randomly during the (6) rounds 
@@ -89,18 +89,18 @@ both get zero points and both proceed.
 • If one player doesn’t answer fast enough, he/she will receive zero points for 
 that round and then both players will also proceed
 
-                                                        Shared Mode: Memory game 
+                                     Shared Mode: Memory game 
 Used in both single and 2-player modes. 
 • Follows a 6-level progression of a sequence. 
 Scoring system 
-                                                               Single player: 
+                                     Single player: 
 • If in any round enters an incorrect input, the game will restart again from 
 level 1 
 • Points System: 
 o RO1: 1pt – RO2: 2pt – RO3: 4pts – RO4: 7pts – RO5: 11pts – 
 RO6: 16pts 
 • The player will get 0 points if enters any wrong input 
-                                                               2 players: 
+                                     2 players: 
 each round has different potential points  
 RO (round)  
 RO1: 1pt – RO2: 2pt – RO3: 4pts – RO4: 7pts – RO5: 11pts – RO6: 16pts 
