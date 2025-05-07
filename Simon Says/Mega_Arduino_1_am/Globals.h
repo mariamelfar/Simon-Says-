@@ -5,7 +5,6 @@ extern int gameMode;
 extern int playerMode;
 extern LiquidCrystal_I2C lcd;
 
-// Function declarations
 void showPlayerSelect();
 void resetGame();
 void showGameSelect();
