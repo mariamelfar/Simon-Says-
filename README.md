@@ -89,7 +89,7 @@ both get zero points and both proceed.
 • If one player doesn’t answer fast enough, he/she will receive zero points for 
 that round and then both players will also proceed
 
-                                                               Shared Mode: Memory game 
+                                                        Shared Mode: Memory game 
 Used in both single and 2-player modes. 
 • Follows a 6-level progression of a sequence. 
 Scoring system 
