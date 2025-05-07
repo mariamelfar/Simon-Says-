@@ -9,9 +9,9 @@
 #define COORD_MAX_LEN  7
 
 // Hardware pins
-const int ledPins[NUM_LEDS] = {A4, A3, A2, A1};  // LED pins: A1=red, A0=blue, 7=green, A2=yellow
-const int p1Buttons[NUM_LEDS] = { 2, 3, 4, 5 };  // Player 1 buttons: red, blue, green, yellow
-const int p2Buttons[NUM_LEDS] = { 12, 11, 10, 9 }; // Player 2 buttons: red, blue, green, yellow
+const int ledPins[NUM_LEDS] = {A4, A3, A2, A1};  // A1=red, A0=blue, 7=green, A2=yellow
+const int p1Buttons[NUM_LEDS] = { 2, 3, 4, 5 };  // red, blue, green, yellow
+const int p2Buttons[NUM_LEDS] = { 12, 11, 10, 9 }; 
 const int buzzer = 7;
 const int resetButton = 13;
 
