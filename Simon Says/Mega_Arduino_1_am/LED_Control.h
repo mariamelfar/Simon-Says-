@@ -2,10 +2,11 @@
 #include "Constants.h"
 #include "Globals.h"
 
-void initLEDs() {
-  for (int i = 0; i < NUM_LEDS; i++) {
-    pinMode(ledPins[i], OUTPUT);
-  }
+void initLEDs(void) {
+    for (uint8_t i = 0; i < NUM_LEDS; i++) {
+        // each entry in ledPins is a PCx value
+        DDRC |= (1 << ledPins[i]);
+    }
 }
 
 void flashLedAndTone(int idx) {
