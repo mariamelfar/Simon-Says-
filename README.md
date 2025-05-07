@@ -55,7 +55,7 @@ will get 0 points but proceed.
 • Time for each round increase (as there is a higher number of LEDs) 
 • If the player responds faster than the time limit, he/she will receive 1 bonus 
 point. 
-                                        2-Player Mode 
+                                                             2-Player Mode 
 1. Fastest Reaction 
 • Both players respond to the same LED sequence 
 • (5) LEDs light up randomly during the (6) rounds 
@@ -88,3 +88,25 @@ Scoring System:
 both get zero points and both proceed.  
 • If one player doesn’t answer fast enough, he/she will receive zero points for 
 that round and then both players will also proceed
+
+                                                               Shared Mode: Memory game 
+Used in both single and 2-player modes. 
+• Follows a 6-level progression of a sequence. 
+Scoring system 
+                                                               Single player: 
+• If in any round enters an incorrect input, the game will restart again from 
+level 1 
+• Points System: 
+o RO1: 1pt – RO2: 2pt – RO3: 4pts – RO4: 7pts – RO5: 11pts – 
+RO6: 16pts 
+• The player will get 0 points if enters any wrong input 
+                                                               2 players: 
+each round has different potential points  
+RO (round)  
+RO1: 1pt – RO2: 2pt – RO3: 4pts – RO4: 7pts – RO5: 11pts – RO6: 16pts 
+• The player will get 0 points if they enter any wrong inputs 
+• Previous LEDs stay active to the next level, and new LEDs are added to 
+expand the sequence 
+Each mode gives a different experience. Single players focus on skill-building. Two
+player mode adds competition and scoring. Difficulty levels adjust game speed and 
+complexity. LEDs, buttons, and 1 LCD create a responsive physical interface.
